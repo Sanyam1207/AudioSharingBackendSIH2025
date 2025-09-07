@@ -5,7 +5,7 @@ import { Server } from "socket.io";
 const app = express();
 const server = createServer(app);
 const io = new Server(server, {
-  cors: { origin: "https://audio-sharing-sih-2025.vercel.app" },
+  cors: { origin: ["https://audio-sharing-sih-2025.vercel.app", "https://localhost:5173", "http://localhost:5173"], },
 });
 
 const rooms = {}; // { roomId: { teacherId, offers: { studentId: { offer, answer, candidates } } } }
