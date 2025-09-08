@@ -47,13 +47,10 @@ io.on("connection", (socket) => {
     socket.join(roomId);
     console.log(`Student ${socket.id} joined room ${roomId}`);
 
-    // ✅ FIXED: Send teacher existing offers with socket IDs preserved
+    // Send teacher existing offers (teacher can handle them)
     io.to(room.teacherId).emit(
       "availableOffers",
-      Object.keys(room.offers).map((sid) => ({
-        offererSocketId: sid,
-        ...room.offers[sid],
-      }))
+      Object.values(room.offers)
     );
   });
 
